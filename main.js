@@ -7,7 +7,7 @@ function createMainwindow() {
   const mainWindow = new BrowserWindow({
     title: "Resize imager",
     width: isDev ? 1000 : 500,
-    height: 600,
+    height: 1000,
   });
 
   if (isDev) {

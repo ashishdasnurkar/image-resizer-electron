@@ -26,6 +26,17 @@ app.whenReady().then(() => {
   });
 });
 
+const menu = [
+  {
+    label: "File",
+    submenu: [
+      {
+        label: "Quit",
+      },
+    ],
+  },
+];
+
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();

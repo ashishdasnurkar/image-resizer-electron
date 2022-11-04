@@ -1,5 +1,5 @@
 const path = require("path");
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -19,6 +19,8 @@ function createMainwindow() {
 
 app.whenReady().then(() => {
   createMainwindow();
+  const mainMenu = Menu.buildFromTemplate(menu);
+  Menu.setApplicationMenu(mainMenu);
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createMainWindow();
@@ -32,6 +34,10 @@ const menu = [
     submenu: [
       {
         label: "Quit",
+        click: () => {
+          app.quit();
+        },
+        accelerator: "CmdOrCtrl+W",
       },
     ],
   },

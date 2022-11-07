@@ -30,16 +30,7 @@ app.whenReady().then(() => {
 
 const menu = [
   {
-    label: "File",
-    submenu: [
-      {
-        label: "Quit",
-        click: () => {
-          app.quit();
-        },
-        accelerator: "CmdOrCtrl+W",
-      },
-    ],
+    role: "fileMenu",
   },
 ];
 

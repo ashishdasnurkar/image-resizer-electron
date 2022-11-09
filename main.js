@@ -45,6 +45,18 @@ const menu = [
   {
     role: "fileMenu",
   },
+  ...(!isMac
+    ? [
+        {
+          label: "Help",
+          submenu: [
+            {
+              label: "About",
+            },
+          ],
+        },
+      ]
+    : []),
 ];
 
 app.on("window-all-closed", () => {

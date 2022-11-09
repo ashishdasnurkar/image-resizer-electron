@@ -18,6 +18,18 @@ function createMainwindow() {
   mainWindow.loadFile(path.join(__dirname, "./renderer/index.html"));
 }
 
+// About Window
+function createAboutWindow() {
+  aboutWindow = new BrowserWindow({
+    width: 300,
+    height: 300,
+    title: "About Electron",
+    icon: `${__dirname}/assets/icons/Icon_256x256.png`,
+  });
+
+  aboutWindow.loadFile(path.join(__dirname, "./renderer/about.html"));
+}
+
 app.whenReady().then(() => {
   createMainwindow();
   const mainMenu = Menu.buildFromTemplate(menu);
@@ -37,6 +49,7 @@ const menu = [
           submenu: [
             {
               label: "About",
+              click: createAboutWindow,
             },
           ],
         },
@@ -52,6 +65,7 @@ const menu = [
           submenu: [
             {
               label: "About",
+              click: createAboutWindow,
             },
           ],
         },

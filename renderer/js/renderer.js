@@ -43,6 +43,11 @@ function resizeImage(e) {
   });
 }
 
+// When done, show message
+ipcRenderer.on("image:done", () =>
+  alertSuccess(`Image resized to ${heightInput.value} x ${widthInput.value}`)
+);
+
 function isFileImage(file) {
   const acceptedFileTypes = ["image/gif", "image/png", "image/jpeg"];
   return file && acceptedFileTypes.includes(file["type"]);

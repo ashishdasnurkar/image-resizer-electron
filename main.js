@@ -44,6 +44,9 @@ app.whenReady().then(() => {
   createMainwindow();
   const mainMenu = Menu.buildFromTemplate(menu);
   Menu.setApplicationMenu(mainMenu);
+  // Remove variable from memory
+  mainWindow.on("closed", () => (mainWindow = null));
+
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createMainWindow();

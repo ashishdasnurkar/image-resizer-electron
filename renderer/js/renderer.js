@@ -18,11 +18,25 @@ function loadImage(e) {
   outputPath.innerText = path.join(os.homedir(), "imageresizer");
 }
 
+// Resize image
+function resizeImage(e) {
+  e.preventDefault();
+
+  if (!img.files[0]) {
+    alertError("Please upload an image");
+    return;
+  }
+
+  if (widthInput.value === "" || heightInput.value === "") {
+    alertError("Please enter a width and height");
+    return;
+  }
+}
+
 function isFileImage(file) {
   const acceptedFileTypes = ["image/gif", "image/png", "image/jpeg"];
   return file && acceptedFileTypes.includes(file["type"]);
 }
-img.addEventListener("change", loadImage);
 
 function alertSuccess(message) {
   Toastify.toast({
@@ -49,3 +63,6 @@ function alertError(message) {
     },
   });
 }
+img.addEventListener("change", loadImage);
+// Form submit listener
+form.addEventListener("submit", resizeImage);

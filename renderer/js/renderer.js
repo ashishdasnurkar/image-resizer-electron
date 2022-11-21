@@ -31,6 +31,16 @@ function resizeImage(e) {
     alertError("Please enter a width and height");
     return;
   }
+  // Electron adds a bunch of extra properties to the file object including the path
+  const imgPath = img.files[0].path;
+  const width = widthInput.value;
+  const height = heightInput.value;
+
+  ipcRenderer.send("image:resize", {
+    imgPath,
+    height,
+    width,
+  });
 }
 
 function isFileImage(file) {

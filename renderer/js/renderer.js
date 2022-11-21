@@ -12,6 +12,10 @@ function loadImage(e) {
     return;
   }
   console.log("Success");
+  // Show form, image name and output path
+  form.style.display = "block";
+  filename.innerHTML = img.files[0].name;
+  outputPath.innerText = path.join(os.homedir(), "imageresizer");
 }
 
 function isFileImage(file) {

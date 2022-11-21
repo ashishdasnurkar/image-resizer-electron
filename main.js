@@ -9,6 +9,11 @@ function createMainwindow() {
     title: "Resize imager",
     width: isDev ? 1000 : 500,
     height: 1000,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: true,
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
   if (isDev) {
